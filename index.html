@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Pendu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@400;600;800&family=Atkinson+Hyperlegible:wght@400;700&family=Courier+Prime:wght@700&family=VT323&family=Orbitron:wght@500;800&family=Caveat:wght@500;700&family=Fredoka:wght@500;700&family=Pacifico&family=Bebas+Neue&family=Silkscreen:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Le Pendu<small>Devine le mot avant que le bonhomme soit pendu.</small></h1>
+    <div class="scores" aria-live="polite">
+      <div class="score"><span>Gagnées</span><b id="wins">0</b></div>
+      <div class="score"><span>Perdues</span><b id="losses">0</b></div>
+      <div class="score"><span>Série</span><b id="streak">0</b></div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <label for="cat">Thème</label>
+    <select id="cat"></select>
+    <label for="decor">Décor</label>
+    <select id="decor">
+      <option value="ecolier">Écolier</option>
+      <option value="hacker">Hacker</option>
+      <option value="espace">Espace</option>
+      <option value="nature">Nature</option>
+      <option value="chatons">Chatons</option>
+      <option value="plage">Plage</option>
+      <option value="ballon">Ballon</option>
+      <option value="minecraft">Minecraft</option>
+    </select>
+    <button id="new" class="primary" type="button">Nouveau mot</button>
+    <button id="clue" type="button">Indice (coûte un essai)</button>
+  </div>
+
+  <section class="game">
+    <div class="drawing">
+      <svg viewBox="0 0 220 240" role="img" aria-label="Dessin du pendu">
+        <path class="part" d="M20 225 H140"/>
+        <path class="part" d="M50 225 V20"/>
+        <path class="part" d="M50 20 H150"/>
+        <path class="part" d="M50 60 L90 20"/>
+        <path class="part" d="M150 20 V50"/>
+        <circle class="part" cx="150" cy="70" r="20"/>
+        <path class="part" d="M150 90 V150"/>
+        <path class="part" d="M150 105 L125 130 M150 105 L175 130"/>
+        <path class="part" d="M150 150 L130 190 M150 150 L170 190"/>
+      </svg>
+      <div class="lives">Essais restants : <b id="left">9</b> / 9</div>
+    </div>
+
+    <div class="board">
+      <div class="category">Thème : <b id="catname"></b> · <span id="len"></span></div>
+      <div class="word" id="word" aria-live="polite"></div>
+      <p class="message" id="msg" aria-live="assertive"></p>
+      <div class="keyboard" id="kb"></div>
+      <p class="hint">Clavier physique accepté. <kbd>Entrée</kbd> lance un nouveau mot quand la partie est finie. Les accents comptent comme la lettre simple : E révèle É, È, Ê.</p>
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
